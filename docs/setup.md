@@ -112,12 +112,15 @@ theme/assets/compare.css
 
 Add Code from file
 
-
-This styles:
+**This styles:-**
 
 sticky compare bar
+
 compare chips
+
 compare layout
+
+
 ---
 
 ## 🚀 STEP 6 — Create Compare JavaScript Engine
@@ -129,12 +132,15 @@ theme/assets/compare.js
 
 Add Code
 
-This handles:
+**This handles:**
 
-compare logic
+<i>compare logic
+
 storage
+
 sticky bar rendering
-add/remove compare products
+
+add/remove compare products</i>
 
 ---
 
@@ -165,11 +171,14 @@ Add:
 {{ 'compare.css' | asset_url | stylesheet_tag }}
 {{ 'compare.js' | asset_url | script_tag }}
 
-This loads:
+**This loads:**
 
 compare CSS
+
 compare JS
+
 sticky compare bar
+
 ---
 
 ## 🚀 STEP 8 — Create Compare Page Template
@@ -204,11 +213,14 @@ Add Code
 
 Add full compare table code here.
 
-This file:
+**This file:**
 
 renders compare table
+
 loads metafields
+
 creates product comparison rows
+
 ---
 
 ## 🚀 STEP 10 — Create Compare Page in Shopify
