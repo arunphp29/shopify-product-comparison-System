@@ -16,22 +16,22 @@ Compatible with:
 
 Create these files inside your Shopify theme:
 
-theme/
-├── assets/
-│   ├── compare.js
-│   └── compare.css
-│
-├── snippets/
-│   └── compare-button.liquid
-│
-├── sections/
-│   └── compare-table.liquid
-│
-├── templates/
-│   └── page.compare.json
-│
-└── layout/
-    └── theme.liquid
+theme/<br>
+├── assets/<br>
+│   ├── compare.js<br>
+│   └── compare.css<br>
+│<br>
+├── snippets/<br>
+│   └── compare-button.liquid<br>
+│<br>
+├── sections/<br>
+│   └── compare-table.liquid<br>
+│<br>
+├── templates/<br>
+│   └── page.compare.json<br>
+│<br>
+└── layout/<br>
+    └── theme.liquid<br>
 
 ---
 
