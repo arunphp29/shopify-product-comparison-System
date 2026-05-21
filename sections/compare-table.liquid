@@ -1,0 +1,133 @@
+<script type="application/json" id="compare-product-data">
+
+{
+{% for product in collections.all.products limit: 250 %}
+
+"{{ product.handle }}": {
+  "title": {{ product.title | json }},
+  "url": {{ product.url | json }},
+  "image": {{ product.featured_image | image_url: width: 300 | json }},
+  "price": {{ product.price | json }},
+  "material": {{ product.metafields.custom.material.value | json }},
+  "weight": {{ product.metafields.custom.weight.value | json }},
+  "dimensions": {{ product.metafields.custom.dimensions.value | json }},
+  "warranty": {{ product.metafields.custom.warranty.value | json }}
+}
+
+{% unless forloop.last %},{% endunless %}
+{% endfor %}
+}
+
+</script>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  const handles =
+    JSON.parse(localStorage.getItem('shopify_compare_products')) || [];
+
+  const root =
+    document.getElementById('compare-table-root');
+
+  if (!handles.length) {
+    root.innerHTML = '<p>No products selected.</p>';
+    return;
+  }
+
+  // STEP 11 → HERE
+  const productData = JSON.parse(
+    document.getElementById('compare-product-data').textContent
+  );
+
+  let html = `
+    <table border="1" cellpadding="10">
+  `;
+
+  // HEADER ROW
+  html += '<tr><td></td>';
+
+  handles.forEach(handle => {
+
+    const product = productData[handle];
+
+    if (!product) return;
+
+    html += `
+      <td>
+        <img src="${product.image}" width="150">
+
+        <h3>${product.title}</h3>
+
+        <p>
+          ${(product.price / 100).toFixed(2)}
+        </p>
+      </td>
+    `;
+  });
+
+  html += '</tr>';
+
+  // MATERIAL ROW
+  html += '<tr><td>Material</td>';
+
+  handles.forEach(handle => {
+
+    const product = productData[handle];
+
+    html += `
+      <td>${product.material || '-'}</td>
+    `;
+  });
+
+  html += '</tr>';
+
+  // WEIGHT ROW
+  html += '<tr><td>Weight</td>';
+
+  handles.forEach(handle => {
+
+    const product = productData[handle];
+
+    html += `
+      <td>${product.weight || '-'}</td>
+    `;
+  });
+
+  html += '</tr>';
+
+  // DIMENSIONS ROW
+  html += '<tr><td>Dimensions</td>';
+
+  handles.forEach(handle => {
+
+    const product = productData[handle];
+
+    html += `
+      <td>${product.dimensions || '-'}</td>
+    `;
+  });
+
+  html += '</tr>';
+
+  // WARRANTY ROW
+  html += '<tr><td>Warranty</td>';
+
+  handles.forEach(handle => {
+
+    const product = productData[handle];
+
+    html += `
+      <td>${product.warranty || '-'}</td>
+    `;
+  });
+
+  html += '</tr>';
+
+  html += '</table>';
+
+  root.innerHTML = html;
+
+});
+
+</script>
